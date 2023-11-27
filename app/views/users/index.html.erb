@@ -1,0 +1,24 @@
+<% provide(:title, 'Users') %>
+<div class="container to_bottom">
+    <h1>Users</h1>
+    <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+    <%= link_to 'Blog Posts', blog_posts_path, class: 'btn btn-success' %>
+
+    <table class="table table-striped mt-5 mb-5 align-middle">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+    </tr>
+
+    <% @users.each do |user| %>
+        <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user, class: 'btn btn-dark' %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>

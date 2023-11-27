@@ -1,0 +1,10 @@
+<div class="container to_bottom">
+    <h1><%= @blog_post.title %></h1>
+
+    <p><%= @blog_post.content %></p>
+
+    <p><strong>User:</strong> <%= @blog_post.user.name if @blog_post.user %></p>
+
+    <%= link_to 'Edit', edit_blog_post_path(@blog_post), class: 'btn btn-secondary' %>
+    <%= link_to 'Back', blog_posts_path, class: 'btn btn-dark' %>
+</div>
