@@ -10796,3 +10796,36 @@ header.masthead .post-heading .meta a {
     font-size: 2.25rem;
   }
 }
+
+.resize_img {
+  width: 100px;
+  height: 100px;
+}
+.resize_img_show {
+  width: 60%;
+  height: 400px;
+  margin: 1rem 0;
+  object-fit: cover;
+}
+.resize_img_thumb {
+  width: 100%;
+  height: 120px;
+  margin: 1rem 0;
+  object-fit: cover;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+li {
+  list-style: none;
+}

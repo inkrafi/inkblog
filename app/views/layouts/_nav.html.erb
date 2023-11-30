@@ -1,5 +1,5 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
     <div class="container px-4 px-lg-5">
         <%= link_to "Start Bootstrap", root_path, class: "navbar-brand" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,10 +8,47 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><%= link_to "Home",      root_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
-                <li class="nav-item"><%= link_to "About",     about_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
-                <li class="nav-item"><%= link_to "Blog Post", blog_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                <li>
+                    <form action="<%= recent_blog_path %>" method="get" class="d-flex pt-3" onsubmit="return validateSearch()">
+                        <div class="input-group mb-3">
+                            <%= text_field_tag(:q, params[:q], placeholder: 'Search...', class: 'form-control me-2') %>
+                            <button type="submit" class="btn btn-outline-primary mb-3">Search</button>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item"><%= link_to "Home",  root_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                <li class="nav-item"><%= link_to "About", about_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                <% if logged_in? %>
+                    <li class="nav-item"><%= link_to "Blog Posts",  blog_posts_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Users", users_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item dropdown pt-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><%= link_to "Profile", current_user, class: 'dropdown-item' %></li>
+                            <li><%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %></li>
+                        </ul>
+                    </li>
+                <% else %>
+                    <li class="nav-item"><%= link_to "Blog",    blog_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Log In",  login_path,  class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
+                    <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link px-lg-3 py-3 py-lg-4 btn btn-dark rounded-5 text-white"%></li>
+                <% end %>
             </ul>
         </div>
     </div>
 </nav>
+
+<script>
+  function validateSearch() {
+    var searchQuery = document.getElementById('q').value.trim();
+
+    if (searchQuery === '') {
+      alert('Search cannot be empty.');
+      return false; // Pembatalan pengiriman formulir
+    }
+
+    return true; // Lanjutkan dengan pengiriman formulir
+  }
+</script>

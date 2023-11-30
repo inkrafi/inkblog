@@ -1,4 +1,5 @@
 <div class="container to_bottom">
+
     <div class="row">
         <div class="col-md-10">
             <h1><%= @blog_post.title %></h1>
@@ -12,15 +13,14 @@
                     <%= link_to tag.name, tag_path(tag) %>
                 <% end %>
             </p>
-            <p><strong>Posted by:</strong> <%= @blog_post.user.name if @blog_post.user %></p>
+            <p>
+                <strong>Posted by:</strong> <%= @blog_post.user.name if @blog_post.user %>
+                <br>
+                <span class="text-secondary fs-6"><%= @blog_post.created_at.strftime("%B %d, %Y") %></span>
+            </p>
 
-            <% if current_user?(@user) %>
-                <%= link_to 'Edit', edit_blog_post_path(@blog_post), class: 'btn btn-secondary' %>
-            <% end %>
-            <div class="my-5">
-                <%= link_to 'Go to Profile', user_path(@blog_post.user.id), class: 'btn btn-primary' %>
-                <%= link_to 'Go to Blog Posts', blog_posts_path, class: 'btn btn-success' %>
-            </div>
+            <%= link_to 'Back', root_path, class: 'btn btn-dark my-4' %>
         </div>
     </div>
+
 </div>

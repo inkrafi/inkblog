@@ -1,13 +1,15 @@
 <%= form_with(model: blog_post, local: true) do |form| %>
   <% if blog_post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(blog_post.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
+      <div class="alert alert-danger">
+        <h2>The form contains <%= pluralize(blog_post.errors.count, "error") %></h2>
 
-      <ul>
-        <% blog_post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% blog_post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -22,8 +24,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.all, :id, :name, prompt: 'Select a user' %>
+    <%= form.label :summary %>
+    <%= form.text_field :summary, id: :blog_post_summary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title_image_url %>
+    <%= form.text_field :title_image_url, id: :blog_post_title_image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_list %><br />
+    <%= form.text_field :tag_list %>
   </div>
 
   <div class="actions">

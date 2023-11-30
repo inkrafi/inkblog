@@ -1,0 +1,22 @@
+<div class="container px-4 px-lg-5">
+    <h1 class="mt-4">Blog Post Tagged with "<%= @tag.name %>"</h1>
+    <div class="d-flex flex-wrap">
+        <% @tag.blog_post.each do |blog_post| %>
+            <div class="col-md-3 mb-4 mx-4">
+                <!-- Post preview-->
+                <div class="post-preview">
+                <a href="<%= post_path(blog_post) %>">
+                    <h2 class="post-title fs-3"><%= blog_post.title %></h2>
+                    <img src="<%= blog_post.title_image_url %>" alt="image" class="resize_img_thumb">
+                    <h3 class="post-subtitle fs-4"><%= truncate(blog_post.content, length: 50) %></h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <span class="text-dark"><%= blog_post.user.name if blog_post.user %></span>
+                    <%= time_ago_in_words(blog_post.created_at) %> ago.
+                </p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Create a main sample user.
+User.create!(name:  "Example User",
+             email: "example@railstutorial.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin:true)

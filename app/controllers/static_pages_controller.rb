@@ -8,4 +8,9 @@ class StaticPagesController < ApplicationController
 
   def blog
   end
+
+  def post
+    @blog_post = BlogPost.find(params[:id])
+  end
+
 end

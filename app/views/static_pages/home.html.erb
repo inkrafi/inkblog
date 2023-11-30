@@ -18,60 +18,27 @@
             <!-- Post preview-->
             <% @blog_posts.each do |blog_post| %>
             <div class="post-preview">
-                <a href="post.html">
+                <a href="<%= post_path(blog_post) %>">
                     <h2 class="post-title"><%= blog_post.title %></h2>
-                    <h3 class="post-subtitle"><%= truncate(blog_post.content, length: 150) %></h3>
+                    <img src="<%= blog_post.title_image_url %>" alt="image" class="resize_img_thumb">
+                    <h3 class="post-subtitle fs-4"><%= truncate(blog_post.content, length: 150) %></h3>
                 </a>
                 <p class="post-meta">
                     Posted by
-                    <a href="#!"><%= blog_post.user.name if blog_post.user %></a>
-                    <%= blog_post.created_at %>
+                    <span class="text-dark"><%= blog_post.user.name if blog_post.user %></span>
+                    <%= time_ago_in_words(blog_post.created_at) %> ago.
                 </p>
             </div>
+            <!-- Divider-->
+            <hr class="my-4" />
             <% end %>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 18, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                    <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on August 24, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Failure is not an option</h2>
-                    <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on July 8, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
+
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+            <%
+=begin%>
+ <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> 
+<%
+=end%>
         </div>
     </div>
 </div>
