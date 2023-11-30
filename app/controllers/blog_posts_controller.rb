@@ -1,6 +1,5 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:create, :destroy, ]
+  before_action :logged_in_user, only: [:index, :new, :create, :show, :edit, :destroy]
 
   def index
     @blog_posts = BlogPost.all
@@ -53,13 +52,9 @@ class BlogPostsController < ApplicationController
       flash.now[:warning] = "No results found for '#{params[:q]}'."
     end
 
-    render 'recent_blog'
   end
 
   private
-
-  def set_blog_post
-  end
 
   def blog_post_params
     params.require(:blog_post).permit(:title, :content, :summary, :title_image_url, :tag_list)
