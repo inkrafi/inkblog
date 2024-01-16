@@ -1,22 +1,25 @@
 <div class="container to_bottom">
 
-    <div class="row">
-        <div class="col-md-10">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
             <h1><%= @blog_post.title %></h1>
+            <p>
+                Posted by<strong> <%= @blog_post.user.name if @blog_post.user %></strong>
+                ·
+                <span class="text-secondary"><%= @blog_post.created_at.strftime("%B %d, %Y") %></span>
+            </p>
             <img src="<%= @blog_post.title_image_url %>" alt="image" class="resize_img_show">
             <p><%= @blog_post.content %></p>
-            <h4 class="mt-5">Summary</h4>
-            <p><%= @blog_post.summary %></p>
+            <% if @blog_post.summary.present? %>
+                <h4 class="mt-5">Summary</h4>
+                <p><%= @blog_post.summary %></p>
+            <% end %>
+            <br/>
             <p>
                 <strong>Tags:</strong>
                 <% @blog_post.tags.each do |tag| %>
                     <%= link_to tag.name, tag_path(tag) %>
                 <% end %>
-            </p>
-            <p>
-                <strong>Posted by:</strong> <%= @blog_post.user.name if @blog_post.user %>
-                <br>
-                <span class="text-secondary fs-6"><%= @blog_post.created_at.strftime("%B %d, %Y") %></span>
             </p>
 
             <%= link_to 'Back', root_path, class: 'btn btn-dark my-4' %>

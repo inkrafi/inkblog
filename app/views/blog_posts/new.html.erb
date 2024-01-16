@@ -1,7 +1,51 @@
 <div class="container to_bottom">
-    <h1>New Blog Post</h1>
+    <h1 class="text-center">New Blog Post</h1>
 
-    <%= render 'form', blog_post: @blog_post %>
+    <div class="container col-md-6">
+        <%= form_with(model: @blog_post, local: true) do |form| %>
+            <% if @blog_post.errors.any? %>
+            <div id="error_explanation">
+                <div class="alert alert-danger">
+                <h2>The form contains <%= pluralize(@blog_post.errors.count, "error") %></h2>
 
-    <%= link_to 'Back', blog_posts_path, class: 'btn btn-secondary' %>
+                <ul>
+                    <% @blog_post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+                </div>
+            </div>
+            <% end %>
+
+            <div class="field">
+            <%= form.label :title %>
+            <%= form.text_field :title, id: :blog_post_title %>
+            </div>
+
+            <div class="field">
+            <%= form.label :content %>
+            <%= form.text_area :content, id: :blog_post_content, style: 'height: 200px' %>
+            </div>
+
+            <div class="field">
+            <%= form.label :summary %> <span class="fs-6">(optional)</span>
+            <%= form.text_field :summary, id: :blog_post_summary %>
+            </div>
+
+            <div class="field">
+            <%= form.label :title_image_url %>
+            <%= form.text_field :title_image_url, id: :blog_post_title_image_url %>
+            </div>
+
+            <div class="field">
+            <%= form.label :tag_list %> <span class="fs-6">(separated by comma)</span>
+            <%= form.text_field :tag_list %>
+            </div>
+
+            <div class="actions">
+            <%= form.submit "Create Blog Post", class: "btn btn-primary mt-2 mb-5" %>
+            </div>
+        <% end %>
+    </div>
+    
 </div>

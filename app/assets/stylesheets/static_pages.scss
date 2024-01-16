@@ -2,3 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.logo {
+  margin-top: -20px;
+}
+
+.nav-link:hover {
+  color: #0085A1;
+}
+.btn-signup {
+  color: #0085A1;
+  font-weight: bold;
+}
+.btn-signup:hover {
+  color: #fff;
+}
+
+.post-container {
+  margin: 2rem 0;
+  padding: 1rem 0;
+
+  .post-preview {
+    width: 100%;
+    
+    .post-title {
+      height: 3rem;
+    }
+  }
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  .tag-list {
+    display: flex;
+    padding: 4px 12px;
+    border: 2px solid #0085A1;
+    border-radius: 2rem;
+    background-color: #fff;
+  }
+}

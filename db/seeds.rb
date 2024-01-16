@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create a main sample user.
-User.create!(name:  "Example User",
-             email: "example@railstutorial.com",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin:true)
+User.create!(name:  "admin",
+            email: "blog@admin.com",
+            password:              "password",
+            password_confirmation: "password",
+            admin:true)

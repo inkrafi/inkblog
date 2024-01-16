@@ -1,11 +1,13 @@
 <div class="container to_bottom">
-    <div class="row">
-        <div class="col-md-10">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
             <h1><%= @blog_post.title %></h1>
             <img src="<%= @blog_post.title_image_url %>" alt="image" class="resize_img_show">
             <p><%= @blog_post.content %></p>
-            <h4 class="mt-5">Summary</h4>
-            <p><%= @blog_post.summary %></p>
+            <% if @blog_post.summary.present? %>
+                <h4 class="mt-5">Summary</h4>
+                <p><%= @blog_post.summary %></p>
+            <% end %>
             <p>
                 <strong>Tags:</strong>
                 <% @blog_post.tags.each do |tag| %>

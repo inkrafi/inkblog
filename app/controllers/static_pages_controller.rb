@@ -1,12 +1,14 @@
 class StaticPagesController < ApplicationController
   def home
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.order(created_at: :desc).limit(3)
   end
 
   def about
   end
 
   def blog
+    @blog_posts = BlogPost.all
+    @tags = Tag.all
   end
 
   def post
