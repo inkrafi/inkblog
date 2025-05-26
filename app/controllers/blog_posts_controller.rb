@@ -6,7 +6,7 @@ class BlogPostsController < ApplicationController
   end
 
   def show
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = BlogPost.find_by(slug: params[:id]) || BlogPost.find(params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class BlogPostsController < ApplicationController
   end
 
   def edit
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = BlogPost.find_by(slug: params[:id]) || BlogPost.find(params[:id])
   end
 
   def update
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = BlogPost.find_by(slug: params[:id]) || BlogPost.find(params[:id])
     if @blog_post.update(blog_post_params)
       flash[:success] = 'Blog post was successfully updated.'
       redirect_to @blog_post
@@ -38,7 +38,7 @@ class BlogPostsController < ApplicationController
   end
 
   def destroy
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = BlogPost.find_by(slug: params[:id]) || BlogPost.find(params[:id])
     @blog_post.destroy
     flash[:success] = 'Blog post deleted successfully.'
     redirect_to user_path(@blog_post.user.id)
@@ -51,7 +51,6 @@ class BlogPostsController < ApplicationController
     if @blog_posts.blank?
       flash.now[:warning] = "No results found for '#{params[:q]}'."
     end
-
   end
 
   private

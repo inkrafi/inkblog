@@ -1,0 +1,70 @@
+/* Styling untuk pagination Kaminari */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #EFF4F6;
+}
+
+.pagination span {
+  margin: 0 0.3rem;
+}
+
+.pagination span a,
+.pagination span.current,
+.pagination span.gap {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.pagination span a {
+  background-color: #fff;
+  color: #0085A1;
+  border: 1px solid #0085A1;
+}
+
+.pagination span a:hover {
+  background-color: #0085A1;
+  color: #fff;
+}
+
+.pagination span.current {
+  background-color: #0085A1;
+  color: #fff;
+  border: 1px solid #0085A1;
+  font-weight: bold;
+}
+
+.pagination span.gap {
+  border: none;
+  color: #6c757d;
+}
+
+.pagination .first,
+.pagination .prev,
+.pagination .next,
+.pagination .last {
+  font-weight: bold;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 576px) {
+  .pagination span a,
+  .pagination span.current,
+  .pagination span.gap {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .pagination span {
+    margin: 0 0.2rem;
+  }
+}

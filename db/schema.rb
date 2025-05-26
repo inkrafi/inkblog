@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_29_080913) do
+ActiveRecord::Schema.define(version: 2025_05_26_121853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2023_11_29_080913) do
     t.string "title_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_blog_posts_on_slug", unique: true
     t.index ["user_id", "created_at"], name: "index_blog_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_blog_posts_on_user_id"
   end
@@ -40,6 +42,8 @@ ActiveRecord::Schema.define(version: 2023_11_29_080913) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

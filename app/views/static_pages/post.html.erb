@@ -9,7 +9,7 @@
                 <span class="text-secondary"><%= @blog_post.created_at.strftime("%B %d, %Y") %></span>
             </p>
             <img src="<%= @blog_post.title_image_url %>" alt="image" class="resize_img_show">
-            <p><%= @blog_post.content %></p>
+            <%= simple_format(@blog_post.content) %>
             <% if @blog_post.summary.present? %>
                 <h4 class="mt-5">Summary</h4>
                 <p><%= @blog_post.summary %></p>

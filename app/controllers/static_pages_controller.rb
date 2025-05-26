@@ -7,12 +7,11 @@ class StaticPagesController < ApplicationController
   end
 
   def blog
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.page(params[:page]).per(6)
     @tags = Tag.all
   end
 
   def post
-    @blog_post = BlogPost.find(params[:id])
+    @blog_post = BlogPost.find_by(slug: params[:id]) || BlogPost.find(params[:id])
   end
-
 end
